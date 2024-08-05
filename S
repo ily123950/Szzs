@@ -1,0 +1,220 @@
+local TweenService = game:GetService("TweenService")
+local UserInputService = game:GetService("UserInputService")
+local ScreenGui = Instance.new("ScreenGui")
+local MainFrame = Instance.new("Frame")
+local UICornerMainFrame = Instance.new("UICorner")
+local Frame = Instance.new("Frame")
+local UICornerMain = Instance.new("UICorner")
+local ScrollingFrame = Instance.new("ScrollingFrame")
+local Button = Instance.new("TextButton")
+local ExtraButton = Instance.new("TextButton")
+local NewButton = Instance.new("TextButton")
+local UICornerButton = Instance.new("UICorner")
+local UICornerExtraButton = Instance.new("UICorner")
+local UICornerNewButton = Instance.new("UICorner")
+local CloseButton = Instance.new("TextButton")
+local UICornerCloseButton = Instance.new("UICorner")
+local TabButton1 = Instance.new("TextButton")
+local TabButton2 = Instance.new("TextButton")
+local UICornerTabButton1 = Instance.new("UICorner")
+local UICornerTabButton2 = Instance.new("UICorner")
+local HelloButton = Instance.new("TextButton")
+local UICornerHelloButton = Instance.new("UICorner")
+local Indicator = Instance.new("Frame")  -- Новый элемент для индикатора
+
+ScreenGui.Parent = game.CoreGui
+
+-- Создание основного фрейма
+MainFrame.Parent = ScreenGui
+MainFrame.BackgroundTransparency = 0
+MainFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)  -- Черный цвет
+MainFrame.Position = UDim2.new(0.5, -135, 0.5, -45)  -- Чуть меньше справа и снизу
+MainFrame.Size = UDim2.new(0, 270, 0, 90)  -- Уменьшен размер
+MainFrame.Active = true
+MainFrame.Draggable = true
+
+UICornerMainFrame.CornerRadius = UDim.new(0, 4)  -- Округление краев MainFrame
+UICornerMainFrame.Parent = MainFrame
+
+-- Создание основного фрейма внутри MainFrame
+Frame.Parent = MainFrame
+Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)  -- Черный цвет
+Frame.Size = UDim2.new(1, 0, 1, 0)
+
+UICornerMain.CornerRadius = UDim.new(0, 4)  -- Уменьшенное округление краев
+UICornerMain.Parent = Frame
+
+-- Создание прокручиваемого фрейма для кнопок
+ScrollingFrame.Parent = Frame
+ScrollingFrame.Position = UDim2.new(0, 50, 0, 10)
+ScrollingFrame.Size = UDim2.new(0, 220, 0, 80)  -- Ширина увеличена
+ScrollingFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)  -- Черный цвет
+ScrollingFrame.BorderSizePixel = 0  -- Убрать обводку
+ScrollingFrame.CanvasSize = UDim2.new(0, 0, 0, 130)  -- Обновленный размер CanvasSize
+ScrollingFrame.ScrollBarThickness = 6
+ScrollingFrame.ScrollingDirection = Enum.ScrollingDirection.Y  -- Скроллинг только вверх и вниз
+
+-- Создание кнопок для вкладок
+TabButton1.Parent = Frame
+TabButton1.BackgroundColor3 = Color3.fromRGB(25, 25, 25)  -- Цвет кнопок чуть темнее
+TabButton1.Position = UDim2.new(0, 10, 0, 10)  -- Верхняя кнопка
+TabButton1.Size = UDim2.new(0, 30, 0, 30)
+TabButton1.Text = "Main"
+UICornerTabButton1.CornerRadius = UDim.new(0, 4)  -- Округление краев как у MainFrame
+UICornerTabButton1.Parent = TabButton1
+
+TabButton2.Parent = Frame
+TabButton2.BackgroundColor3 = Color3.fromRGB(25, 25, 25)  -- Цвет кнопок чуть темнее
+TabButton2.Position = UDim2.new(0, 10, 0, 50)  -- Нижняя кнопка
+TabButton2.Size = UDim2.new(0, 30, 0, 30)
+TabButton2.Text = "Info"
+UICornerTabButton2.CornerRadius = UDim.new(0, 4)  -- Округление краев как у MainFrame
+UICornerTabButton2.Parent = TabButton2
+
+-- Создание главной кнопки "Tab"
+Button.Parent = ScrollingFrame
+Button.BackgroundColor3 = Color3.fromRGB(25, 25, 25)  -- Цвет кнопок чуть темнее
+Button.Position = UDim2.new(0, 0, 0, 0)
+Button.Size = UDim2.new(0, 200, 0, 30)  -- Ширина увеличена
+Button.Font = Enum.Font.GothamBold
+Button.Text = "Tab"
+Button.TextColor3 = Color3.fromRGB(255, 255, 255)
+Button.TextSize = 14
+Button.TextXAlignment = Enum.TextXAlignment.Left
+
+UICornerButton.CornerRadius = UDim.new(0, 4)  -- Округление краев как у MainFrame
+UICornerButton.Parent = Button
+
+-- Создание индикатора для кнопки "Tab"
+Indicator.Parent = Button
+Indicator.BackgroundColor3 = Color3.fromRGB(0, 0, 0)  -- Черный цвет
+Indicator.Position = UDim2.new(0, 5, 0.5, -20)  -- Слева и ниже центра кнопки
+Indicator.Size = UDim2.new(0, 20, 0, 20)  -- Размер круга
+Indicator.AnchorPoint = Vector2.new(0, 0.5)  -- Центрирование по вертикали
+Indicator.BorderSizePixel = 0
+
+local UICornerIndicator = Instance.new("UICorner")
+UICornerIndicator.CornerRadius = UDim.new(1, 0)  -- Круглый индикатор
+UICornerIndicator.Parent = Indicator
+
+-- Создание дополнительной кнопки под главной кнопкой
+ExtraButton.Parent = ScrollingFrame
+ExtraButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)  -- Цвет кнопок чуть темнее
+ExtraButton.Position = UDim2.new(0, 0, 0, 40)
+ExtraButton.Size = UDim2.new(0, 200, 0, 30)  -- Ширина увеличена
+ExtraButton.Font = Enum.Font.GothamBold
+ExtraButton.Text = "Extra"
+ExtraButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+ExtraButton.TextSize = 14
+ExtraButton.TextXAlignment = Enum.TextXAlignment.Left
+
+UICornerExtraButton.CornerRadius = UDim.new(0, 4)  -- Округление краев как у MainFrame
+UICornerExtraButton.Parent = ExtraButton
+
+-- Создание новой кнопки над "Extra"
+NewButton.Parent = ScrollingFrame
+NewButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)  -- Цвет кнопок чуть темнее
+NewButton.Position = UDim2.new(0, 0, 0, 80)
+NewButton.Size = UDim2.new(0, 200, 0, 30)  -- Ширина увеличена
+NewButton.Font = Enum.Font.GothamBold
+NewButton.Text = "New"
+NewButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+NewButton.TextSize = 14
+NewButton.TextXAlignment = Enum.TextXAlignment.Left
+
+UICornerNewButton.CornerRadius = UDim.new(0, 4)  -- Округление краев как у MainFrame
+UICornerNewButton.Parent = NewButton
+
+-- Создание кнопки "Hello"
+HelloButton.Parent = Frame
+HelloButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)  -- Цвет кнопок чуть темнее
+HelloButton.Position = UDim2.new(0, 50, 0, 10)  -- По умолчанию скрыта
+HelloButton.Size = UDim2.new(0, 200, 0, 30)  -- Ширина увеличена
+HelloButton.Font = Enum.Font.GothamBold
+HelloButton.Text = "Hello"
+HelloButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+HelloButton.TextSize = 14
+HelloButton.TextXAlignment = Enum.TextXAlignment.Left
+HelloButton.Visible = false
+
+UICornerHelloButton.CornerRadius = UDim.new(0, 4)  -- Округление краев как у MainFrame
+UICornerHelloButton.Parent = HelloButton
+
+-- Создание круглой красной кнопки для закрытия GUI
+CloseButton.Parent = ScreenGui
+CloseButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+CloseButton.Position = UDim2.new(1, -30, 0, 5)
+CloseButton.Size = UDim2.new(0, 20, 0, 20)
+CloseButton.Text = ""
+UICornerCloseButton.CornerRadius = UDim.new(1, 0)  -- Круглая кнопка
+UICornerCloseButton.Parent = CloseButton
+CloseButton.ZIndex = 3
+
+CloseButton.MouseButton1Click:Connect(function()
+    ScreenGui:Destroy()
+end)
+
+-- Функция для создания анимации увеличения и уменьшения кнопок
+local function createScaleAnimation(button)
+    local defaultSize = button.Size
+    local maxSize = UDim2.new(defaultSize.X.Scale, defaultSize.X.Offset * 1.1, defaultSize.Y.Scale, defaultSize.Y.Offset * 1.1)
+    local tweenInfo = TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut)
+    
+    local tweenIn = TweenService:Create(button, tweenInfo, {Size = maxSize, Position = UDim2.new(button.Position.X.Scale, button.Position.X.Offset - (maxSize.X.Offset - defaultSize.X.Offset) / 2, button.Position.Y.Scale, button.Position.Y.Offset - (maxSize.Y.Offset - defaultSize.Y.Offset) / 2)})
+    local tweenOut = TweenService:Create(button, tweenInfo, {Size = defaultSize, Position = button.Position})
+
+    button.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            tweenIn:Play()
+        end
+    end)
+
+    button.InputEnded:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            tweenOut:Play()
+        end
+    end)
+end
+
+-- Применение анимации ко всем кнопкам
+createScaleAnimation(TabButton1)
+createScaleAnimation(TabButton2)
+createScaleAnimation(Button)
+createScaleAnimation(ExtraButton)
+createScaleAnimation(NewButton)
+createScaleAnimation(HelloButton)
+createScaleAnimation(CloseButton)
+
+-- Функция для анимации индикатора
+local function animateIndicator()
+    local indicatorTweenIn = TweenService:Create(Indicator, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {BackgroundColor3 = Color3.fromRGB(255, 255, 255)})  -- Переход в белый
+    local indicatorTweenOut = TweenService:Create(Indicator, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {BackgroundColor3 = Color3.fromRGB(0, 0, 0)})  -- Переход в черный
+
+    if Indicator.BackgroundColor3 == Color3.fromRGB(0, 0, 0) then
+        indicatorTweenIn:Play()
+        wait(0.3)  -- Ждем завершения анимации
+        Indicator.BackgroundColor3 = Color3.fromRGB(255, 255, 255)  -- Установить цвет в белый
+    else
+        indicatorTweenOut:Play()
+        wait(0.3)  -- Ждем завершения анимации
+        Indicator.BackgroundColor3 = Color3.fromRGB(0, 0, 0)  -- Установить цвет в черный
+    end
+end
+
+Button.MouseButton1Click:Connect(animateIndicator)
+
+-- Функционал для переключения между кнопками
+TabButton1.MouseButton1Click:Connect(function()
+    Button.Visible = true
+    ExtraButton.Visible = true
+    NewButton.Visible = true
+    HelloButton.Visible = false
+end)
+
+TabButton2.MouseButton1Click:Connect(function()
+    Button.Visible = false
+    ExtraButton.Visible = false
+    NewButton.Visible = false
+    HelloButton.Visible = true
+    HelloButton.Text = "Hello, " .. game.Players.LocalPlayer.DisplayName
+end)
